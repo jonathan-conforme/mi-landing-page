@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+
+/* Añade esto al final de tu index.css */
+.dark body {
+  background-color: #111827; /* Gris muy oscuro (gray-900) */
+  color: white;
+}
+
+/* Esto asegura que todos los textos que eran grises se vean claros */
+.dark .text-gray-900 {
+  color: #f9fafb !important;
+}
+
+.dark .text-gray-600 {
+  color: #d1d5db !important;
+}
+
+/* Fuerza el fondo oscuro en el Navbar y Header */
+.dark .bg-white {
+    background-color: #111827 !important; /* gray-900 */
+}
+
+/* Fuerza el color de los textos en los enlaces */
+.dark .text-gray-700, .dark .text-gray-900 {
+    color: #f3f4f6 !important; /* gray-100 */
+}
+
+/* Fuerza el color del borde */
+.dark .border-gray-100 {
+    border-color: #1f2937 !important; /* gray-800 */
+}
