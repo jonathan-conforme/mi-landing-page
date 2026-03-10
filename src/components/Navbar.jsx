@@ -54,7 +54,7 @@ export function Navbar() {
                             {navigation.pages.map((page) => (
                                 <div key={page.name} className="flow-root">
                                     {/* Añadido dark:text-gray-200 */}
-                                    <a href={page.href} className="-m-2 block p-2 font-medium text-gray-900 dark:text-gray-200">
+                                    <a href={page.href} className="-m-2 block p-2 font-medium text-gray-900 dark:text-gray-200 " onClick={() => setOpen(false)}>
                                         {page.name}
                                     </a>
                                 </div>

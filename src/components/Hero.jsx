@@ -22,11 +22,8 @@ export const Hero = () => {
             <div className="dark:bg-gray-900 mx-auto max-w-2xl pt-10 pb-5 sm:pt-16 sm:pb-16 lg:pt-24 text-center">
                 {/* Badge: En móvil se ve centrado y pequeño */}
                 <div className="mb-8 flex justify-center">
-                    <div className="relative rounded-full px-3 py-1 text-xs sm:text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 bg-indigo-50/50">
-                        🔥 20% Descuento en Proyectos Académicos. {' '}
-                        <a href="#" className="font-semibold text-indigo-600">
-                            Ver más <span aria-hidden="true">&rarr;</span>
-                        </a>
+                    <div className="relative rounded-full px-3 py-1 text-xs sm:text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20  bg-indigo-50/50">
+                        🔥 20% Descuento en Proyectos Académicos.
                     </div>
                 </div>
                 {/* Título principal (Heading) */}
