@@ -7,7 +7,7 @@ export function Features() {
   ];
 
   return (
-    <section id="nosotros" className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section id="nosotros" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           

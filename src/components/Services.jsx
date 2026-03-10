@@ -11,7 +11,7 @@ export function Services() {
     ]
 
     return (
-        <section id="servicios" className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors">
+        <section id="servicios" className="py-16 bg-white dark:bg-gray-900 transition-colors">
             <div className="mx-auto max-w-7xl px-6 lg:px-8 dark:bg-gray-900">
                 <div className=" mx-auto max-w-2xl text-center  dark:bg-gray-900">
                     <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-900 sm:text-4xl">
