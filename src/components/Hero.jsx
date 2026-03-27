@@ -1,11 +1,11 @@
 // src/components/Hero.jsx
 export const Hero = () => {
     return (
-        <div id="Servicios" className="relative isolate lg:px-8 dark:bg-gray-900 px-6">
+        <div id="Servicios" className="animate__animated animate__jello relative isolate lg:px-8 dark:bg-gray-800 px-6 bg-white transition-colors duration-300">
             {/* Fondo degradado suave (opcional, le da un toque extra elegante) */}
             {/* Añade pointer-events-none aquí */}
             <div
-                className="dark:bg-gray-900 absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80 pointer-events-none"
+                className=" absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80 pointer-events-none"
                 aria-hidden="true"
             >
                 <div
@@ -19,49 +19,46 @@ export const Hero = () => {
 
             {/* Contenido principal */}
             {/* Bajamos el padding superior (pt) drásticamente */}
-            <div className="dark:bg-gray-900 mx-auto max-w-2xl pt-10 pb-5 sm:pt-16 sm:pb-16 lg:pt-24 text-center">
-                {/* Badge: En móvil se ve centrado y pequeño */}
-                <div className="mb-8 flex justify-center">
-                    <div className="relative rounded-full px-3 py-1 text-xs sm:text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20  bg-indigo-50/50">
-                        🔥 20% Descuento en Proyectos Académicos.
-                    </div>
-                </div>
-                {/* Título principal (Heading) */}
-                <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
-                    Asesoría académica  <span className="text-indigo-600 relative">
-                        Profesional 
-
-                    </span>{' '}
-                    para Tesis, Artículos, Proyectos de Grado.
-                </h1>
-
-                {/* Párrafo descriptivo */}
-                <p className="mt-6 text-lg leading-8 text-gray-600">
-                    Te acompañamos en la elaboración de tesis, artículos científicos, proyectos de aula y tareas complejas.
-                    Resultados garantizados con rigor académico y total confidencialidad.   </p>
-
-                {/* Botones de acción (CTA) */}
-                <div className="relative z-10 mt-10 flex items-center justify-center gap-x-6">
-                    <a
-                        href="#"
-                        className="rounded-full border border-gray-300 bg-gray-900 px-8 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 
-             dark:bg-white dark:hover:bg-white transition-colors"
-                    >
-                        Cotizar mi proyecto
-                    </a>
-                    <a
-                        href="#"
-                        className="rounded-full border border-gray-300 px-8 py-3 text-sm font-semibold shadow-sm 
-             /* Modo Claro */
-             text-gray-900 bg-white hover:bg-gray-50 
-             /* Modo Oscuro */
-             dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 
-             transition-colors"
-                    >
-                        Ver servicios
-                    </a>
-                </div>
-            </div>
+  <div className="mx-auto max-w-2xl pt-10 pb-5 sm:pt-16 sm:pb-16 lg:pt-24 text-center">
+    
+    {/* Badge: Ahora resalta más y tiene soporte para modo oscuro */}
+    <div className="mb-8 flex justify-center">
+        <div className="relative rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium text-indigo-700 bg-indigo-50 ring-1 ring-inset ring-indigo-600/20 hover:bg-indigo-100 dark:text-indigo-300 dark:bg-indigo-900/30 dark:ring-indigo-500/30 transition-colors cursor-pointer">
+            🔥 20% de descuento en tu primer proyecto
         </div>
+    </div>
+
+    {/* Título principal (Heading) */}
+    <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
+        Tu Éxito Académico <br className="hidden sm:block" />
+        <span className="text-indigo-600 relative">Sin Estrés</span>
+    </h1>
+
+    {/* Párrafo descriptivo */}
+    <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+        Nos encargamos de investigar, redactar y estructurar tu tesis, artículos científicos y trabajos universitarios. Te entregamos documentos listos para presentar, 100% libres de plagio.
+    </p>
+
+    {/* Botones de acción (CTA) */}
+    <div className="relative z-10 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-x-6">
+        <a
+            href="https://wa.me/593980659712?text=Hola%20quiero%20cotizar%20mi%20proyecto"
+                                    target="_blank"
+            className="w-full sm:w-auto rounded-full bg-indigo-600 px-8 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 transition-all hover:-translate-y-1"
+        >
+            Cotizar mi proyecto
+        </a>
+        <a
+            href="#servicios"
+            className="w-full sm:w-auto rounded-full bg-white dark:bg-gray-800/50 border border-gray-300 dark:border-gray-600 px-8 py-3.5 text-sm font-semibold text-gray-900 dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
+        >
+            Ver servicios
+        </a>
+    </div>
+</div>
+        </div>
+        
+
+
     );
 };

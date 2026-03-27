@@ -1,93 +1,210 @@
-import testimonios from '../assets/images/testimonios.jpeg';
+import { useInView } from 'react-intersection-observer';
+
+import mory_mora from '../assets/images/mory_mora.jpg';
+import testimonio2 from '../assets/images/testimonio2.jpeg';
+import testimonio_jami from '../assets/images/testimonio_jami.png';
+import testimonio4 from '../assets/images/testimonio4.jpg';
+
 const testimonials = [
   {
-    name: 'Karan',
-    title: 'Estudiante de Derecho',
-    avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=100', // Unsplash Avatar
+    name: 'Jamileth Denisse',
+    title: 'Ingeniera en Tecnologías de la Información - UNESUM',
+    avatar: testimonio_jami,
     rating: 5,
-    text: 'Mi experiencia fue increíble. Recibieron mi proyecto de aula muy rápido y me guiaron en toda la metodología. ¡Aprobé con excelencia y sin observaciones!',
+    text: 'Me ayudaron con mi estudio de caso para Ingeniería en TIC. El trabajo quedó bien estructurado y con buena metodología. Gracias a su apoyo obtuve una excelente calificación.',
   },
   {
-    name: 'Catherine',
-    title: 'Licenciatura en Salud',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100', // Unsplash Avatar
+    name: 'Ashley Perez',
+    title: 'Bachiller en Informática - Colegio Eduardo Granja Garcés',
+    avatar: testimonio2,
     rating: 5,
-    text: 'Increíble servicio. Tenía muchas dudas con mi artículo científico y ellos me ayudaron a darle rigor académico y un formato APA impecable. ¡Muy recomendados!',
+    text: 'Excelente trabajo. Me ayudaron con mi proyecto de grado en la especialidad de Informática. Todo quedó muy bien explicado y presentado, lo que me permitió graduarme sin problemas. ¡Totalmente recomendados!',
   },
   {
-    name: 'Adrian Cardenas ',
-    title: 'Ingeniero en Tecnologías de la Información',
-    avatar: testimonios,
     rating: 5,
-    text: 'No sabía cómo empezar mi tesis. El cronograma de trabajo me dio orden y el reporte de Compilatio me dejó súper tranquilo. ¡Al fin me gradué!',
+    text: 'Nos brindaron un excelente apoyo en nuestro proyecto grupal de nivelación. El trabajo fue entregado por etapas, con revisiones constantes y correcciones oportunas hasta dejarlo completamente listo para su presentación final.',
+    name: 'Grupo de Estudiantes',
+    avatar: null,
+    title: 'Ingeniería Civil - Nivelación Académica UNESUM',
   },
-
+  {
+    name: 'Mary Mora',
+    title: 'Estudiante de Ingeniería Civil - UNESUM',
+    avatar: mory_mora,
+    rating: 5,
+    text: 'Delegar la investigación de mis trabajos grupales fue la mejor decisión. Te entregan todo bien estructurado, con reportes de originalidad y listo para presentar. ¡100% recomendados!.',
+  },
+  {
+    name: 'Delgado Nohelia, Peñafiel Jemima',
+    title: 'Bachiller en Ciencias - Colegio Eduardo Granja Garcés.',
+    avatar: testimonio4,
+    rating: 5,
+    text: 'Nuestro proyecto de grado quedó bien estructurado y con buena investigación. Pudimos defenderlo sin problemas.',
+  },
 ];
 
-
 export function Testimonials() {
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map(word => word[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase();
+  };
+
   return (
-    <section id="testimonios" className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        
-        {/* Encabezado General (Estilo Trustpilot) */}
-        <div className="text-center mb-20 flex flex-col items-center">
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
+    <section id="testimonios" className="py-20 bg-white dark:bg-gray-800 transition-colors">
+
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+
+        {/* HEADER */}
+        <div
+          ref={ref}
+          className={`text-center mb-16 flex flex-col items-center transition-all duration-700
+          ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
             Testimonios
           </h2>
-          <p className="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-            Tu éxito académico es nuestro compromiso. Cientos de estudiantes confían en nosotros para sus proyectos y tesis.
+
+          <p className="mt-4 text-sm text-gray-600 dark:text-gray-400 max-w-xl">
+            La confianza de nuestros estudiantes respalda la calidad de nuestro trabajo académico.
           </p>
-          
-          {/* Calificación Simulada */}
-          <div className="mt-8 flex flex-col items-center gap-2 border-y border-gray-200 dark:border-gray-800 py-6 w-full max-w-lg">
-             <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-3xl text-indigo-600 dark:text-indigo-400 hover:underline">★</span>
-                ))}
+
+          {/* Rating */}
+          <div className="mt-6 flex flex-col items-center gap-2 border-y border-gray-200 dark:border-gray-800 py-4 w-full max-w-md">
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-xl text-indigo-600">★</span>
+              ))}
             </div>
-            <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                4.8 / 5 basado en <span className="font-bold">210+</span> reseñas. <span className="text-gray-500 dark:text-gray-400 font-normal">Excelencia Académica</span>
+            <p className="text-xs text-gray-600 dark:text-gray-400">
+              4.8 / 5 basado en <span className="font-semibold">210+</span> reseñas
             </p>
           </div>
         </div>
 
-        {/* Grid de Testimonios (Responsive) */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {testimonials.map((t, index) => (
-            <div 
-              key={index} 
-              className="relative flex flex-col justify-between bg-white dark:bg-gray-800 p-8 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-xl transition-all hover:shadow-2xl hover:-translate-y-1"
-            >
-              <div>
-                {/* Estrellas */}
-                <div className="flex items-center gap-1 mb-4">
+        {/* FILA 1 - 3 TESTIMONIOS */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
+          {testimonials.slice(0, 3).map((t, index) => {
+
+            const { ref: cardRef, inView: cardVisible } = useInView({
+              triggerOnce: true,
+              threshold: 0.2,
+            });
+
+            return (
+              <div
+                ref={cardRef}
+                key={index}
+                className={`w-full max-w-sm flex flex-col justify-between bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-700 ease-out hover:shadow-xl hover:-translate-y-1 hover:border-indigo-500/40
+                ${cardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                style={{ transitionDelay: `${index * 200}ms` }}
+              >
+
+                <div className="flex gap-1 mb-3">
                   {[...Array(t.rating)].map((_, i) => (
-                    <span key={i} className="text-2xl text-indigo-600 dark:text-indigo-400">★</span>
+                    <span key={i} className="text-indigo-600 text-lg">★</span>
                   ))}
                 </div>
-                
-                {/* Texto del Testimonio */}
-                <p className="text-base leading-7 text-gray-600 dark:text-gray-400 italic">
+
+                <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
                   "{t.text}"
                 </p>
-              </div>
 
-              {/* Info del Cliente */}
-              <div className="mt-8 flex items-center gap-4 border-t border-gray-100 dark:border-gray-700 pt-6">
-                <img 
-                  src={t.avatar} 
-                  alt={t.name} 
-                  className="h-12 w-12 rounded-full object-cover border-2 border-gray-200 dark:border-gray-700" 
-                />
-                <div>
-                  <p className="text-sm font-bold text-gray-900 dark:text-white">{t.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{t.title}</p>
+                <div className="mt-6 flex items-center gap-3 border-t border-gray-200 dark:border-gray-700 pt-4">
+
+                  {t.avatar ? (
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      className="h-10 w-10 rounded-full object-cover border border-gray-300 dark:border-gray-700"
+                    />
+                  ) : (
+                    <div className="h-10 w-10 rounded-full bg-indigo-600 flex items-center justify-center text-white text-sm font-bold">
+                      {getInitials(t.name)}
+                    </div>
+                  )}
+
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                      {t.name}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      {t.title}
+                    </p>
+                  </div>
                 </div>
+
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+        {/* FILA 2 - CENTRADA */}
+        <div className="flex justify-center gap-6 mt-6 flex-wrap">
+          {testimonials.slice(3).map((t, index) => {
+
+            const { ref: cardRef, inView: cardVisible } = useInView({
+              triggerOnce: true,
+              threshold: 0.2,
+            });
+
+            return (
+              <div
+                ref={cardRef}
+                key={index}
+                className={`w-full max-w-sm flex flex-col justify-between bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-700 ease-out hover:shadow-xl hover:-translate-y-1 hover:border-indigo-500/40
+                ${cardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                style={{ transitionDelay: `${index * 200}ms` }}
+              >
+
+                <div className="flex gap-1 mb-3">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <span key={i} className="text-indigo-600 text-lg">★</span>
+                  ))}
+                </div>
+
+                <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                  "{t.text}"
+                </p>
+
+                <div className="mt-6 flex items-center gap-3 border-t border-gray-200 dark:border-gray-700 pt-4">
+
+                  {t.avatar ? (
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      className="h-10 w-10 rounded-full object-cover border border-gray-300 dark:border-gray-700"
+                    />
+                  ) : (
+                    <div className="h-10 w-10 rounded-full bg-indigo-600 flex items-center justify-center text-white text-sm font-bold">
+                      {getInitials(t.name)}
+                    </div>
+                  )}
+
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                      {t.name}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      {t.title}
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );

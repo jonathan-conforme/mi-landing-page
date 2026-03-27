@@ -1,5 +1,5 @@
-'use client'
-
+import 'animate.css';
+import { Link } from "react-router-dom";
 import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon, SunIcon, MoonIcon, AcademicCapIcon } from '@heroicons/react/24/outline'
@@ -7,37 +7,27 @@ import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon, SunIcon, MoonIcon, AcademicC
 // Navegación actualizada para tu negocio
 const navigation = {
     pages: [
-        { name: 'Inicio', href: '#nav' },
-        { name: 'Servicios', href: '#servicios' },
-        { name: 'Cómo trabajamos', href: '#trabajo' },
-        { name: 'Testimonios', href: '#testimonios' },
-        { name: 'Nosotros', href: '#nosotros' },
-        { name: 'Contacto', href: '#contacto' },
+        { name: 'Inicio', href: '/#nav' },
+        { name: 'Servicios', href: '/#servicios' },
+        { name: 'Cómo trabajamos', href: '/#trabajo' },
+        { name: 'Testimonios', href: '/#testimonios' },
+        { name: 'Nosotros', href: '/#nosotros' },
+        { name: 'Precios', href: '/precios' },
+        { name: 'Equipo', href: '/equipo' },
+        
 
     ],
 }
 
 export function Navbar() {
     const [open, setOpen] = useState(false)
-    const [darkMode, setDarkMode] = useState(false)
 
-    const toggleDarkMode = () => {
-        const html = document.documentElement;
 
-        // Usamos el valor funcional del estado para evitar errores de sincronía
-        setDarkMode((prev) => {
-            const newMode = !prev;
-            if (newMode) {
-                html.classList.add('dark');
-            } else {
-                html.classList.remove('dark');
-            }
-            return newMode;
-        });
-    };
+
+
     return (
         // Añadido dark:border-gray-800 para que la línea divisoria no brille en modo oscuro
-        <div className="bg-white border-b border-gray-100 dark:bg-gray-900 dark:border-gray-800 transition-colors duration-300">
+        <div className="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-900 transition-colors duration-300 dark:text-white">
 
             {/* Mobile menu */}
             <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
@@ -64,7 +54,7 @@ export function Navbar() {
                 </div>
             </Dialog>
 
-            <header className="relative bg-white dark:bg-gray-900 transition-colors duration-300">
+            <header className="animate__animated animate__flipInX relative bg-white dark:bg-gray-900 transition-colors duration-300">
                 <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
 
@@ -78,23 +68,32 @@ export function Navbar() {
                             <a href="#" className="flex items-center gap-2">
                                 <AcademicCapIcon className="h-8 w-auto text-indigo-600" />
                                 {/* Texto del logo adaptado para modo dark */}
-                                <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white hidden sm:block">
-                                    AsesoríaPro
+                                <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white">
+                                    EducaTask Academic
                                 </span>
                             </a>
                         </div>
 
                         {/* Enlaces Centrales (Desktop) */}
                         <div className="hidden lg:flex lg:space-x-8">
-                            {navigation.pages.map((page) => (
-                                <a
-                                    key={page.name}
-                                    href={page.href}
-                                    // Añadido dark:text-gray-300 y dark:hover:text-indigo-400
-                                    className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                                >
-                                    {page.name}
-                                </a>
+                            {navigation.pages.map((item) => (
+                                item.href.startsWith('/') ? (
+                                    <Link
+                                        key={item.name}
+                                        to={item.href}
+                                        className="text-sm font-medium hover:text-indigo-600"
+                                    >
+                                        {item.name}
+                                    </Link>
+                                ) : (
+                                    <a
+                                        key={item.name}
+                                        href={item.href}
+                                        className="text-sm font-medium hover:text-indigo-600"
+                                    >
+                                        {item.name}
+                                    </a>
+                                )
                             ))}
                         </div>
 
@@ -104,7 +103,7 @@ export function Navbar() {
                             {/* BOTÓN WHATSAPP OFICIAL */}
                             <div className="flex">
                                 <a
-                                    href="https://wa.me/tu-numero-aqui"
+                                    href="https://wa.me/593980659712?text=Hola%20quiero%20cotizar%20mi%20proyecto"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="group flex items-center p-2 transition-all duration-300"
@@ -124,17 +123,7 @@ export function Navbar() {
                                 </a>
                             </div>
 
-                            {/* Modo dark botón */}
-                            <button
-                                onClick={toggleDarkMode}
-                                className="p-2 text-gray-400 hover:text-yellow-500 transition-colors"
-                            >
-                                {darkMode ? (
-                                    <SunIcon className="size-6 text-yellow-400" />
-                                ) : (
-                                    <MoonIcon className="size-6 text-gray-500 dark:text-gray-400" />
-                                )}
-                            </button>
+
                         </div>
                     </div>
                 </nav>
