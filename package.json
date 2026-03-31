@@ -17,6 +17,7 @@
     "@mui/material": "^7.3.9",
     "@tailwindcss/vite": "^4.2.1",
     "animate.css": "^4.1.1",
+    "dayjs": "^1.11.20",
     "flowbite": "^4.0.1",
     "flowbite-react": "^0.12.17",
     "react": "^19.2.0",

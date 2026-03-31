@@ -2,242 +2,117 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
 export function Precios() {
-    return (
-        <section class="bg-white dark:bg-gray-900">
-            <div class="container px-6 py-8 mx-auto">
-                <div class="sm:flex sm:items-center sm:justify-between">
-                    <div>
-                        <h2 class="text-2xl font-bold text-gray-800 lg:text-3xl dark:text-gray-100">Planes claros, resultados garantizados</h2>
-                        <p class="mt-4 text-gray-500 dark:text-gray-400">Correcciones incluidas hasta la aprobación final.</p>
-                    </div>
+    const planes = [
+        {
+            nombre: "Tesis Completa",
+            precio: "350",
+            descripcion: "Desarrollo completo de tu tesis, desde cero hasta final.",
+            caracteristicas: ["Redacción completa", "Gestor Bibliográfico Mendeley", "Formato APA actualizado", "Correcciones incluidas", "Entrega lista para revisión", "Avances por etapas"],
+            popular: false
+        },
+        {
+            nombre: "Sistemas & SaaS",
+            precio: "450", // Precio base sugerido para software
+            descripcion: "Desarrollo de software funcional para proyectos técnicos.",
+            caracteristicas: ["Arquitectura de Software", "Base de Datos incluida", "Frontend & Backend", "Manual de Usuario / DER", "Despliegue (Hosting)", "Código fuente original"],
+            popular: true // Ahora este destaca como tu especialidad técnica
+        },
+        {
+            nombre: "Artículo + Publicación",
+            precio: "350",
+            descripcion: "Nos encargamos de todo el proceso de publicación.",
+            caracteristicas: ["Redacción Completa", "Formato académico \"APA\"", "Revisión Antiplagio", "Correciones incluidas", "Gestión de Publicación"],
+            popular: false 
+        },
+        {
+            nombre: "Trabajos Académicos",
+            precio: "20",
+            descripcion: "Ensayos, informes y tareas específicas.",
+            caracteristicas: ["Uso de Mendeley", "Redacción original", "Formato APA 7ma Ed.", "Referencias Bibliográficas", "Correcciones rápidas"],
+            popular: false
+        }
+    ];
 
+    return (
+        <section className="bg-white dark:bg-gray-900 py-12 transition-colors duration-300">
+            <div className="container px-6 py-8 mx-auto">
+                <div className="text-center sm:text-left">
+                    <h2 className="text-3xl font-bold text-gray-800 lg:text-4xl dark:text-gray-100">
+                        Planes claros, <span className="text-indigo-600">resultados garantizados</span>
+                    </h2>
+                    <p className="mt-4 text-gray-500 dark:text-gray-400 max-w-2xl">
+                        Desde investigación académica hasta implementación de software profesional.
+                    </p>
                 </div>
 
+                {/* He cambiado xl:grid-cols-4 para que entren los 4 planes cómodamente */}
+                <div className="grid gap-6 mt-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {planes.map((plan, index) => (
+                        <div 
+                            key={index}
+                            className={`flex flex-col justify-between px-6 py-8 transition-all duration-300 transform border rounded-2xl 
+                                ${plan.popular 
+                                    ? 'bg-gray-50 dark:bg-gray-800 border-indigo-500 shadow-xl scale-105 z-10' 
+                                    : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 hover:border-indigo-300 hover:scale-[1.02]'
+                                }`}
+                        >
+                            <div>
+                                {plan.popular && (
+                                    <span className="px-3 py-1 text-xs font-semibold text-white bg-indigo-500 rounded-full uppercase tracking-wider">
+                                        Recomendado
+                                    </span>
+                                )}
+                                <p className={`text-lg font-bold mt-2 ${plan.popular ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-800 dark:text-gray-100'}`}>
+                                    {plan.nombre}
+                                </p>
 
-                <div class="grid gap-6 mt-16 -mx-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    <div class="px-6 py-4 transition-colors duration-300 transform border border-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">
-                        <p class="text-lg font-medium text-gray-800 dark:text-gray-100"> Tesis Completa </p>
+                                <h4 className="mt-4 text-4xl font-bold text-gray-800 dark:text-gray-100">
+                                    ${plan.precio} 
+                                    <span className="text-base font-normal text-gray-500 dark:text-gray-400">/ Desde</span>
+                                </h4>
 
-                        <h4 class="mt-2 text-3xl font-semibold text-gray-800 dark:text-gray-100">$350 <span class="text-base font-normal text-gray-600 dark:text-gray-400">/ Desde</span></h4>
+                                <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 leading-relaxed min-h-[40px]">
+                                    {plan.descripcion}
+                                </p>
 
-                        <p class="mt-4 text-gray-500 dark:text-gray-300">Desarrollo completo de tu tesis, desde cero hasta final.</p>
-
-                        <div class="mt-8 space-y-8">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Redacción completa </span>
+                                <div className="mt-8 space-y-4">
+                                    {plan.caracteristicas.map((item, i) => (
+                                        <div key={i} className="flex items-start">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-indigo-500 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                            </svg>
+                                            <span className="mx-3 text-sm text-gray-700 dark:text-gray-300">{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
 
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Formato APA actualizado</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Correcciones incluidas</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Entrega lista para revisión</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Avances por etapas</span>
-                            </div>
-                        </div>
-
-
-
-                        <div className="mt-10 mx-6"> {/* <--- PASO 1: Contenedor con margen lateral */}
-                            <Button
-                                variant="contained"
-                                fullWidth={true}>
-                                Elegir plan
-                            </Button>
-                        </div>
-                    </div>
-
-                    <div class="px-6 py-4 transition-colors duration-300 border border-gray-200 transform rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">
-                        <p class="text-lg font-medium text-gray-800 dark:text-gray-100">Artículo + Publicación</p>
-
-                        <h4 class="mt-2 text-3xl font-semibold text-gray-800 dark:text-gray-100"> $350 <span className="text-base text-gray-500">/ Desde</span></h4>
-
-                        <p class="mt-4 text-gray-500 dark:text-gray-300">Nos encargamos de todo el proceso.</p>
-
-                        <div class="mt-8 space-y-8">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Redacción Completa</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Formato académico "APA"</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Revisión Antiplagio</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Correciones incluidas</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Gestión de Publicación</span>
+                            <div className="mt-10">
+                                <Button 
+                                    variant={plan.popular ? "contained" : "outlined"} 
+                                    fullWidth 
+                                    sx={{ 
+                                        borderRadius: '12px', 
+                                        textTransform: 'none', 
+                                        fontWeight: 'bold',
+                                        py: 1.5,
+                                        cursor: 'pointer', // La manito que pediste
+                                        backgroundColor: plan.popular ? '#6366f1' : 'transparent',
+                                        '&:hover': {
+                                            backgroundColor: plan.popular ? '#4f46e5' : 'rgba(99, 102, 241, 0.04)',
+                                            borderColor: '#6366f1'
+                                        }
+                                    }}
+                                    onClick={() => {
+                                        const msg = encodeURIComponent(`Hola EduTask Academic, me gustaría cotizar el plan: ${plan.nombre}`);
+                                        window.open(`https://wa.me/980659712?text=${msg}`, '_blank');
+                                    }}
+                                >
+                                    Cotizar ahora
+                                </Button>
                             </div>
                         </div>
-
-
-
-                        <div className="mt-10 mx-10"> {/* <--- PASO 1: Contenedor con margen lateral */}
-                            <Button variant="contained" fullWidth={true} className='font-medium tracking-wide' >Elegir plan</Button>
-                        </div>
-                    </div>
-
-                    <div class="px-6 py-4 transition-colors duration-300 transform bg-gray-700 border border-gray-200 rounded-lg dark:bg-gray-800">
-                        <p class="text-lg font-medium text-gray-100">Proyectos de Bachillerato</p>
-
-                        <h4 class="mt-2 text-3xl font-semibold text-gray-100">$80 <span class="text-base font-normal text-gray-400">/ Desde</span></h4>
-
-                        <p class="mt-4 text-gray-300">Desarrollo completo de proyecto de grado.</p>
-
-                        <div class="mt-8 space-y-8">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-300">Investigación del tema</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-300">Redacción completa</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-300">Formato según institución</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-300">Correciones incluidas</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-300">Correciones incluidas</span>
-                            </div>
-                        </div>
-
-                        <div className="mt-10 mx-10"> {/* <--- PASO 1: Contenedor con margen lateral */}
-                            <Button variant="contained" fullWidth={true} className='font-medium tracking-wide' >Elegir plan</Button>
-                        </div>
-                    </div>
-
-                    <div class="px-6 py-4 transition-colors duration-300 transform border border-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">
-                        <p class="text-lg font-medium text-gray-800 dark:text-gray-100">Trabajos Académicos</p>
-
-                        <h4 class="mt-2 text-3xl font-semibold text-gray-800 dark:text-gray-100">$20 <span class="text-base font-normal text-gray-600 dark:text-gray-400">/ Desde</span></h4>
-
-                        <p class="mt-4 text-gray-500 dark:text-gray-300">Desarrollo de ensayos, informes, etc.</p>
-
-                        <div class="mt-8 space-y-8">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">All limited links</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Redacción completa</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Formato académico "APA"</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Referencias Bibligráfias</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-
-                                <span class="mx-4 text-gray-700 dark:text-gray-300">Correciones incluidas</span>
-                            </div>
-                        </div>
-
-                        <div className="mt-10 mx-10"> {/* <--- PASO 1: Contenedor con margen lateral */}
-                            <Button variant="contained" fullWidth={true} className='font-medium tracking-wide' >Elegir plan</Button>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>
