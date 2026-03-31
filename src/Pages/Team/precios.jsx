@@ -105,7 +105,7 @@ export function Precios() {
                                     }}
                                     onClick={() => {
                                         const msg = encodeURIComponent(`Hola EduTask Academic, me gustaría cotizar el plan: ${plan.nombre}`);
-                                        window.open(`https://wa.me/980659712?text=${msg}`, '_blank');
+                                        window.open(`https://wa.me/593980659712?text=${msg}`, '_blank');
                                     }}
                                 >
                                     Cotizar ahora
